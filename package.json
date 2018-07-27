@@ -34,6 +34,7 @@
   },
   "dependencies": {
     "node-sass": "^4.9.0",
-    "react-lite": "0.15.30"
+    "react-lite": "0.15.30",
+    "jquery": "3.3.1"
   }
 }

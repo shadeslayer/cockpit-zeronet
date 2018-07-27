@@ -22,16 +22,21 @@ import cockpit from 'cockpit';
 import React from 'react';
 import './app.scss';
 import service from './lib/service.js'
+var $ = require("jquery");
 
 const _ = cockpit.gettext;
 
 export class Application extends React.Component {
+
+    setZeronetState(proxy) {
+        this.setState({zeronetStatus: proxy.state})
+    }
+
     constructor() {
         super();
 
         var zeronet = service.proxy('zeronet')
-        zeronet.wait(() => this.setState({zeronetStatus: zeronet.state}));
-
+        $(zeronet).on('changed', () => this.setZeronetState(zeronet));
     }
 
     render() {
