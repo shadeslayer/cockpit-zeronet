@@ -1,9 +1,9 @@
 {
-  "name": "starter-kit",
+  "name": "zeronet",
   "version": "0.1.0",
-  "description": "Scaffolding for a cockpit module",
+  "description": "Cockpit Module to control Zeronet",
   "main": "index.js",
-  "repository": "git@github.com:cockpit/starter-kit.git",
+  "repository": "git@github.com:shadeslayer/cockpit-zeronet.git",
   "author": "",
   "license": "LGPL-2.1",
   "scripts": {
