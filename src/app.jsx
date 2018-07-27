@@ -21,6 +21,7 @@
 import cockpit from 'cockpit';
 import React from 'react';
 import './app.scss';
+import service from './lib/service.js'
 
 const _ = cockpit.gettext;
 
@@ -28,9 +29,9 @@ export class Application extends React.Component {
     constructor() {
         super();
 
-        cockpit.file('/etc/hostname').read().done((content) => {
-            this.setState({ 'hostname': content.trim() });
-        });
+        var zeronet = service.proxy('zeronet')
+        zeronet.wait(() => this.setState({zeronetStatus: zeronet.state}));
+
     }
 
     render() {
@@ -38,7 +39,7 @@ export class Application extends React.Component {
             <div className="container-fluid">
                 <h2>Zeronet</h2>
                 <p>
-                    { cockpit.format(_("Running on $0"), this.state.hostname) }
+                    { cockpit.format(_("Zeronet is $0"), this.state.zeronetStatus) }
                 </p>
             </div>
         );
